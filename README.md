@@ -1,32 +1,18 @@
-# 📍 IMU-based Indoor Localization (PDR System)
+# IMU-based Indoor Localization (PDR System)
 
-This project implements a **Pedestrian Dead Reckoning (PDR)** system designed for GPS-denied indoor environments. It processes raw IMU data to track a user's position and orientation in real-time.
+A Pedestrian Dead Reckoning (PDR) system designed for GPS-denied indoor environments, focusing on mitigating IMU sensor drift through probabilistic filtering.
 
----
+## Technical Overview
+This project implements a complete localization pipeline using a Raspberry Pi (Sense HAT) to process raw inertial data. The core challenge addressed is the accumulation of error (drift) in low-cost MEMS sensors.
 
-### 🚀 Key Features
-* ⚖️ **Sensor Fusion:** Uses **Kalman Filtering** to combine accelerometer and gyroscope data for stable heading estimation.
-* 🎲 **Probabilistic Localization:** Implements **Bayesian Grid-based Filtering** and **Particle Filtering** to reduce cumulative sensor drift.
-* 👣 **Motion Modeling:** Includes custom algorithms for stride detection and step-length estimation.
-* 📟 **Embedded Integration:** Optimized for the **Raspberry Pi (Sense HAT)** for real-time processing.
+### Key Implementation Details
+* **Heading Estimation:** Kalman Filtering for sensor fusion of accelerometer and gyroscope data.
+* **Position Correction:** Bayesian grid-based filtering and Particle Filtering to constrain motion models.
+* **Motion Model:** Stride detection and step-length estimation algorithms optimized for real-time performance.
 
----
+## Repository Contents
+* `DFA_Report.ipynb`: Technical report containing mathematical derivations and Python implementation.
+* `*.log`: Experimental data sessions (fast, slow, and sampled) for filter validation.
 
-### 🛠 Technical Architecture
-The system follows a standard probabilistic robotics pipeline:
-1. **Prediction:** Motion model predicts the next state based on IMU data.
-2. **Correction:** Bayesian/Particle filters use map constraints to correct position.
-3. **Filtering:** Kalman Filter smoothes the heading to prevent "spinning" errors.
-
-
----
-
-### 📂 File Guide
-* 📓 **DFA_Report.ipynb:** The main technical report containing mathematical derivations and Python implementation.
-* 📊 **bayes_session_*.log:** Data logs used for testing the Bayesian grid-based filter.
-* 🧬 **particle_session_*.log:** Data logs used for testing the Particle filter.
-
----
-
-### 🎓 Academic Context
-Developed as part of the **Smart Systems Engineering** Master's program. This project demonstrates the mitigation of IMU drift through advanced probabilistic methods.
+## Academic Context
+Developed as part of the **Smart Systems Engineering** Master's program at Hanze University of Applied Sciences. This project demonstrates the application of probabilistic robotics and sensor fusion in embedded systems.
